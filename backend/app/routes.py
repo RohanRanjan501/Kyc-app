@@ -1,4 +1,3 @@
-
 from flask import Blueprint, request, jsonify
 
 kyc_bp = Blueprint('kyc', __name__)
@@ -13,3 +12,4 @@ def kyc_handler():
 
     # Dummy response for now
     return jsonify({'status': 'success', 'message': 'Files received'})
+

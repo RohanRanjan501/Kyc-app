@@ -30,17 +30,28 @@ const UploadPage = () => {
 
     return (
         <div className="upload-container">
-            <h2>KYC Document Upload</h2>
+            <h2 className="title">KYC Document Verification</h2>
             <div className="form-section">
-                <div>
-                    <label>ID Document</label>
-                    <input type="file" onChange={(e) => e.target.files && setImage(e.target.files[0])} />
+                <div className="input-group">
+                    <label htmlFor="document">Upload ID Document</label>
+                    <input
+                        id="document"
+                        type="file"
+                        onChange={(e) => e.target.files && setImage(e.target.files[0])}
+                    />
                 </div>
-                <div>
+                <div className="input-group">
                     <label>Capture Selfie</label>
-                    <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" className="webcam" />
-                    <button onClick={capture}>Capture</button>
-                    {webcamImg && <img src={webcamImg} alt="selfie" className="preview" />}
+                    <Webcam
+                        audio={false}
+                        ref={webcamRef}
+                        screenshotFormat="image/jpeg"
+                        className="webcam"
+                    />
+                    <button type="button" className="secondary-button" onClick={capture}>Capture</button>
+                    {webcamImg && (
+                        <img src={webcamImg} alt="Captured Selfie" className="preview" />
+                    )}
                 </div>
             </div>
             <button className="submit-button" onClick={handleSubmit}>Submit for KYC</button>

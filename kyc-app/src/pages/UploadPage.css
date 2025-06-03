@@ -1,27 +1,51 @@
-/// src/pages/UploadPage.css
 .upload-container {
     max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fefefe;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: #0033a0;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .form-section {
     display: flex;
     gap: 40px;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 300px;
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
 }
 
 input[type="file"] {
-    padding: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #0033a0;
 }
 
 button {
@@ -30,20 +54,51 @@ button {
     background-color: #0033a0;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #001f5c;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background-color: #6c757d;
+}
+
+.secondary-button:hover {
+    background-color: #545b62;
 }
 
 .preview {
-    margin-top: 10px;
-    width: 150px;
-    border-radius: 4px;
+    margin-top: 12px;
+    width: 160px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.webcam {
+    margin-top: 8px;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 .submit-button {
-    margin-top: 20px;
-    padding: 12px;
+    margin-top: 30px;
     width: 100%;
-    background-color: green;
-    font-size: 16px;
+    padding: 14px;
+    font-size: 17px;
+    background-color: #28a745;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
 }
