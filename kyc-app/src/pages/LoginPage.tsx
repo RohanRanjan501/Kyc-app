@@ -1,7 +1,7 @@
-/// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
+import { Eye, EyeOff } from 'lucide-react';
 
 const sampleCreds = {
     username: 'admin',
@@ -11,6 +11,7 @@ const sampleCreds = {
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -32,12 +33,17 @@ const LoginPage = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="password-wrapper">
+                    <input
+                        type={showPassword ? 'text' : 'password'}
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <span onClick={() => setShowPassword(!showPassword)} className="eye-icon">
+                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    </span>
+                </div>
                 {error && <div className="error">{error}</div>}
                 <button onClick={handleLogin}>Login</button>
             </div>
