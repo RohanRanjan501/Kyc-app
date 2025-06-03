@@ -1,0 +1,38 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Local environment variables
+.env
+.env.*.local
+
+# Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+
+# Optional: if you're using JetBrains IDEs
+*.iml
+out/
+
+# Mac M1 cache issue workaround
+*.DS_Store
+
