@@ -1,0 +1,14 @@
+# Ignore environment variables file containing secrets
+backend/.env
+
+# Node modules (if any frontend code uses Node)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# OS or IDE specific files
+.DS_Store
+.vscode/
+*.log
