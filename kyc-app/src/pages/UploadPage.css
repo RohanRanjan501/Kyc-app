@@ -1,104 +1,179 @@
-.upload-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 40px;
-    background-color: #fefefe;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    font-family: 'Segoe UI', sans-serif;
+/* Body & page background */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Container for the entire upload page, centered vertically and horizontally */
+.upload-container {
+    width: 90%;
+    max-width: 900px;
+    height: 600px;          /* Taller card to fit without scroll */
+    margin: 60px auto 40px;
+    padding: 40px 50px;
+    background-color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* spread content vertically */
+}
+
+/* Header Title */
 .title {
-    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
     color: #0033a0;
     margin-bottom: 30px;
-    font-size: 28px;
-    font-weight: 600;
 }
 
+/* Form section uses flexbox with gap and wrapping */
 .form-section {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    flex-grow: 1;
+    align-items: flex-start;
 }
 
+/* Each input group (file input or webcam) */
 .input-group {
-    flex: 1;
-    min-width: 300px;
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Label */
 label {
-    display: block;
     font-weight: 600;
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 12px;
+    color: #222;
+    font-size: 17px;
+}
+
+/* Hide native file input */
+input[type="file"] {
+    display: none;
+}
+
+/* Custom file upload button */
+.custom-file-upload {
+    display: inline-block;
+    padding: 14px 30px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 5px 12px rgba(0, 123, 255, 0.3);
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    user-select: none;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+    box-shadow: 0 7px 18px rgba(0, 86, 179, 0.5);
+}
+
+/* Webcam styles */
+.webcam {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 14px;
+    border: 2px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 14px;
+}
+
+/* Capture button */
+.secondary-button {
+    padding: 12px 28px;
+    background-color: #0069d9;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 105, 217, 0.4);
+    width: max-content;
     font-size: 16px;
 }
 
-input[type="file"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 100%;
-    transition: border-color 0.2s ease;
-}
-
-input[type="file"]:hover {
-    border-color: #0033a0;
-}
-
-button {
-    margin-top: 10px;
-    padding: 10px 16px;
-    background-color: #0033a0;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-    background-color: #001f5c;
-    transform: translateY(-1px);
-}
-
-.secondary-button {
-    background-color: #6c757d;
-}
-
 .secondary-button:hover {
-    background-color: #545b62;
+    background-color: #004a99;
+    box-shadow: 0 5px 15px rgba(0, 74, 153, 0.6);
 }
 
+/* Preview image */
 .preview {
-    margin-top: 12px;
-    width: 160px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 18px;
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
-.webcam {
-    margin-top: 8px;
-    width: 100%;
-    max-width: 320px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
+/* Submit button */
 .submit-button {
-    margin-top: 30px;
+    margin-top: 40px;
+    padding: 18px;
     width: 100%;
-    padding: 14px;
-    font-size: 17px;
-    background-color: #28a745;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    background-color: #28a745; /* Green */
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #218838;
+    background-color: #1e7e34;
+    box-shadow: 0 10px 25px rgba(30, 126, 52, 0.6);
+}
+
+/* Logout button fixed top right outside card */
+.logout-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #d9534f; /* Red */
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 12px rgba(217, 83, 79, 0.4);
+    z-index: 1000;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    background-color: #c9302c;
+    box-shadow: 0 7px 18px rgba(201, 48, 44, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .form-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .input-group {
+        flex: 1 1 100%;
+    }
+
+    .webcam {
+        max-width: 100%;
+    }
 }

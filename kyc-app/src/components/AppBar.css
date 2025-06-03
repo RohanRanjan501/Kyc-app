@@ -1,19 +1,19 @@
-
 .app-bar {
-    background-color: #0033a0;
+    background-color: #002b80;
     color: white;
-    padding: 16px;
+    padding: 5px 10px;
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .app-bar-logo {
-    height: 40px;
-    margin-right: 16px;
+    height: 70px;
+    margin-right: 24px;
 }
 
 .app-bar-title {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
+    margin: 0;
 }
