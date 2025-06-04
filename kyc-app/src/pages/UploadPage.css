@@ -1,179 +1,88 @@
-/* Body & page background */
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color: #f5f7fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Container for the entire upload page, centered vertically and horizontally */
 .upload-container {
-    width: 90%;
-    max-width: 900px;
-    height: 600px;          /* Taller card to fit without scroll */
-    margin: 60px auto 40px;
-    padding: 40px 50px;
-    background-color: #fff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* spread content vertically */
-}
-
-/* Header Title */
-.title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #0033a0;
-    margin-bottom: 30px;
-}
-
-/* Form section uses flexbox with gap and wrapping */
-.form-section {
-    display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    align-items: flex-start;
-}
-
-/* Each input group (file input or webcam) */
-.input-group {
-    flex: 1 1 400px;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Label */
-label {
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #222;
-    font-size: 17px;
-}
-
-/* Hide native file input */
-input[type="file"] {
-    display: none;
-}
-
-/* Custom file upload button */
-.custom-file-upload {
-    display: inline-block;
-    padding: 14px 30px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border-radius: 10px;
-    font-weight: 600;
-    box-shadow: 0 5px 12px rgba(0, 123, 255, 0.3);
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-    user-select: none;
+    max-width: 700px;
+    margin: 30px auto;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
 }
 
-.custom-file-upload:hover {
-    background-color: #0056b3;
-    box-shadow: 0 7px 18px rgba(0, 86, 179, 0.5);
-}
-
-/* Webcam styles */
-.webcam {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 14px;
-    border: 2px solid #ddd;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 14px;
-}
-
-/* Capture button */
-.secondary-button {
-    padding: 12px 28px;
-    background-color: #0069d9;
-    color: white;
-    border: none;
-    border-radius: 10px;
+.title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
     font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 105, 217, 0.4);
-    width: max-content;
-    font-size: 16px;
 }
 
-.secondary-button:hover {
-    background-color: #004a99;
-    box-shadow: 0 5px 15px rgba(0, 74, 153, 0.6);
-}
-
-/* Preview image */
-.preview {
-    margin-top: 18px;
-    width: 180px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
-}
-
-/* Submit button */
-.submit-button {
-    margin-top: 40px;
-    padding: 18px;
-    width: 100%;
-    background-color: #28a745; /* Green */
-    font-size: 20px;
-    color: white;
-    font-weight: 700;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: #1e7e34;
-    box-shadow: 0 10px 25px rgba(30, 126, 52, 0.6);
-}
-
-/* Logout button fixed top right outside card */
-.logout-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #d9534f; /* Red */
-    border: none;
-    color: white;
-    padding: 12px 24px;
-    font-weight: 700;
+.webcam-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 640px;
+    height: 480px;
+    border: 3px solid limegreen;
     border-radius: 10px;
+    box-shadow: 0 0 15px rgba(50, 205, 50, 0.7);
+    overflow: hidden;
+    background: black;
+}
+
+.webcam-video {
+    width: 640px !important;
+    height: 480px !important;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px !important;
+    height: 480px !important;
+    pointer-events: none;
+}
+
+.button-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.capture-button,
+.submit-button {
+    background-color: limegreen;
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    font-size: 1rem;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 5px 12px rgba(217, 83, 79, 0.4);
-    z-index: 1000;
-    font-size: 16px;
+    transition: background-color 0.25s ease;
 }
 
-.logout-button:hover {
-    background-color: #c9302c;
-    box-shadow: 0 7px 18px rgba(201, 48, 44, 0.6);
+.capture-button:hover,
+.submit-button:hover {
+    background-color: #32cd32;
 }
 
-/* Responsive */
-@media (max-width: 800px) {
-    .form-section {
-        flex-direction: column;
-        gap: 40px;
-    }
+.error-message {
+    color: #d32f2f;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
 
-    .input-group {
-        flex: 1 1 100%;
-    }
+.success-message {
+    color: #388e3c;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
 
-    .webcam {
-        max-width: 100%;
-    }
+.preview-section {
+    margin-top: 25px;
+}
+
+.preview-image {
+    width: 320px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(50, 205, 50, 0.8);
 }

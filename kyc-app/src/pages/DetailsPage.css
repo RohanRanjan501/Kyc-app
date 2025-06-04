@@ -1,0 +1,70 @@
+#details-container {
+    max-width: 480px;
+    margin: 50px auto;
+    padding: 25px 20px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    text-align: center;
+}
+
+#details-container header {
+    margin-bottom: 20px;
+}
+
+#details-container header h1 {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+#details-container header button {
+    padding: 6px 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    background-color: #6c757d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#details-container header button:hover {
+    background-color: #5a6268;
+}
+
+#details-body p {
+    margin: 6px 0;
+    font-size: 1rem;
+    line-height: 1.3;
+    text-align: left;
+}
+
+#details-body p strong {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    margin-right: 12px;
+    color: #333;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+#confirm-button {
+    background-color: #007bff;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-button:hover {
+    background-color: #0056b3;
+}

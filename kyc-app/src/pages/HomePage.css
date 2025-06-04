@@ -1,0 +1,63 @@
+/* /src/pages/HomePage.css */
+
+.home-container {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f9fdf9;
+}
+
+.home-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+    text-decoration: underline;
+}
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.step-card {
+    background-color: #e8fce8;
+    border: 1px solid #b8e6b8;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 260px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #00723f;
+}
+
+.step-card p {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.start-button {
+    background-color: #00723f;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover {
+    background-color: #005c33;
+}

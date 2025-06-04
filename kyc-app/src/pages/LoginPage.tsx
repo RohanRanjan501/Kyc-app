@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     const handleLogin = () => {
         if (username === sampleCreds.username && password === sampleCreds.password) {
-            navigate('/upload');
+            navigate('/home');
         } else {
             setError('Invalid credentials');
         }
