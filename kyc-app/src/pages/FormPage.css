@@ -1,109 +1,179 @@
-/* Overall Layout */
-#modern-form-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f6f8;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    box-sizing: border-box;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+/* Overall Layout */  
+#modern-form-container {  
+    width: 100%;  
+    max-width: 1200px;  
+    margin: 0 auto;  
+    padding: 30px;  
+    background-color: #ffffff;  
+    font-family: 'Roboto', sans-serif;  
+    color: #333;  
+    box-sizing: border-box;  
+    border-radius: 10px;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  
+  }  
+    
+  /* Form Header */  
+  #form-header-section {  
+    text-align: center;  
+    margin-bottom: 40px;  
+  }  
+    
+  #form-main-header {  
+    font-size: 32px;  
+    font-weight: bold;  
+    margin: 10px 0;  
+    color: #333;  
+  }  
+    
+  #form-description {  
+    font-size: 18px;  
+    color: #555;  
+    margin-bottom: 20px;  
+  }  
+    
+  /* Form Body */  
+  #form-body {  
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr);  
+    gap: 20px;  
+    align-items: start;  
+  }  
+    
+  /* Form Fields */  
+  .form-field {  
+    display: flex;  
+    flex-direction: column;  
+    margin-bottom: 10px;  
+  }  
+    
+  .form-field label {  
+    font-size: 14px;  
+    font-weight: 600;  
+    margin-bottom: 8px;  
+    color: #333;  
+  }  
+    
+  .form-field input,  
+  .form-field select {  
+    padding: 12px;  
+    font-size: 14px;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+    transition: border-color 0.3s;  
+    background-color: #f9f9f9;  
+  }  
+    
+  .form-field input:focus,  
+  .form-field select:focus {  
+    border-color: #0056b3;  
+    outline: none;  
+  }  
+    
+  /* File Input Styling */  
+  .form-field input[type="file"] {  
+    padding: 8px;  
+    font-size: 14px;  
+    background-color: #fff;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+    cursor: pointer;  
+  }  
+    
+  /* Form Documents */  
+  .form-documents {  
+    display: flex;  
+    justify-content: space-between;  
+    flex-wrap: wrap;  
+    gap: 20px;  
+    grid-column: span 2; /* Ensure it takes the full width */  
+  }  
+    
+  /* Button Styling */  
+  #next-button {  
+    padding: 14px 40px;  
+    font-size: 16px;  
+    color: #fff;  
+    background-color: #007bff;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease, transform 0.2s ease;  
+  }  
+    
+  #next-button:hover {  
+    background-color: #0056b3;  
+    transform: scale(1.05);  
+  }  
+    
+  /* Form Documents */  
+  .form-documents {  
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr); /* Adjust this if you want fewer or more columns */  
+    gap: 20px;  
+    grid-column: span 2; /* Ensures it spans the full width of the form */  
+    align-items: start;  
+}  
+  
+.form-field-doc {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+}  
+  
+.form-field-doc input[type="file"] {  
+    width: auto; /* Adjust as needed for a fixed width or set to auto for dynamic sizing */  
+    padding: 4px 10px; /* Reduce padding for a smaller button */  
+    font-size: 12px; /* Reduce font size */  
+    background-color: #fff;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    text-align: center;  
+}  
+  
+.form-field-doc label {  
+    margin-bottom: 4px; /* Adjust spacing between label and input */  
+    font-size: 14px;  
+    font-weight: 600;  
+    text-align: center;  
+}  
+  
+.image-preview {  
+    max-width: 150px;  
+    max-height: 100px;  
+    width: auto;  
+    height: auto;  
+    margin-top: 10px;  
+    border-radius: 8px;  
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);  
+}  
+  
+/* Responsive Design */  
+@media (max-width: 768px) {  
+    .form-documents {  
+        grid-template-columns: 1fr; /* Stack items on smaller screens */  
+    }  
+}  
 
-/* Form Header */
-#form-header-section {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#form-main-header {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #333;
-}
-
-#form-description {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-/* Form Body */
-#form-body {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
-    gap: 20px; /* Space between fields */
-}
-
-/* Form Fields */
-.form-field {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-field label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.form-field input,
-.form-field select {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s;
-}
-
-.form-field input:focus,
-.form-field select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* File Input Styling */
-.form-field input[type="file"] {
-    padding: 8px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Footer Section */
-#form-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#next-button {
-    padding: 12px 30px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#next-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #form-body {
-        grid-template-columns: 1fr;
-    }
-    #modern-form-container {
-        padding: 15px;
-    }
-}
+.buttons-row {  
+    display: flex;  
+    justify-content: space-between; /* This will push the buttons to the edges */  
+    grid-column: span 2; /* Ensure it spans the full width of the form */  
+    margin-top: 20px; /* Add some space above the buttons */  
+}  
+  
+#go-back-button, #next-button {  
+    padding: 14px 40px;  
+    font-size: 16px;  
+    color: #fff;  
+    background-color: #007bff;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease, transform 0.2s ease;  
+}  
+  
+#go-back-button:hover, #next-button:hover {  
+    background-color: #0056b3;  
+    transform: scale(1.05);  
+}  

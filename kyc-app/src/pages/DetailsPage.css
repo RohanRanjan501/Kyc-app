@@ -1,70 +1,107 @@
-#details-container {
-    max-width: 480px;
-    margin: 50px auto;
-    padding: 25px 20px;
-    background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    border-radius: 14px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #222;
-    text-align: center;
-}
+#details-container {  
+    width: 100%;  
+    max-width: 600px;  
+    margin: 50px auto;  
+    padding: 25px 20px;  
+    background: #fff;  
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  
+    border-radius: 14px;  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    color: #222;  
+    text-align: left; /* Align the entire container's text to the left */  
+}  
+  
+#details-container header {  
+    margin-bottom: 20px;  
+}  
+  
+#details-container header h1 {  
+    margin-bottom: 12px;  
+    font-weight: 700;  
+    font-size: 1.5rem;  
+    color: #333;  
+    text-align: center; /* Keep header centered if desired */  
+}  
+  
+#details-container header button {  
+    padding: 8px 16px;  
+    font-weight: 600;  
+    border-radius: 8px;  
+    border: none;  
+    background-color: #6c757d;  
+    color: white;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+}  
+  
+#details-container header button:hover {  
+    background-color: #5a6268;  
+}  
+  
+#details-body {  
+    margin-bottom: 20px; /* Add some space between body and footer */  
+}  
+  
+#details-body p {  
+    margin: 8px 0;  
+    font-size: 1rem;  
+    line-height: 1.5;  
+    text-align: left; /* Ensure each paragraph is left-aligned */  
+}  
+  
+#details-body p strong {  
+    display: inline-block;  
+    width: 140px;  
+    text-align: right; /* Align labels to the right for better readability */  
+    margin-right: 12px;  
+    color: #333;  
+}  
+  
+footer {  
+    margin-top: 30px;  
+    text-align: center; /* Center the footer content */  
+}  
+  
+#confirm-button {  
+    background-color: #007bff;  
+    color: white;  
+    font-weight: 700;  
+    font-size: 1.1rem;  
+    padding: 12px 28px;  
+    border: none;  
+    border-radius: 12px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+}  
+  
+#confirm-button:hover {  
+    background-color: #0056b3;  
+} 
 
-#details-container header {
-    margin-bottom: 20px;
-}
+.buttons-row {  
+    display: flex;  
+    justify-content: space-between; /* This will push the buttons to the edges */  
+    grid-column: span 2; /* Ensure it spans the full width of the form */  
+    margin-top: 20px; /* Add some space above the buttons */  
+}  
 
-#details-container header h1 {
-    margin-bottom: 8px;
-    font-weight: 700;
-}
+.image-preview {  
+    max-width: 150px;  
+    max-height: 100px;  
+    width: auto;  
+    height: auto;  
+    margin-top: 10px;  
+    border-radius: 8px;  
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);  
+}  
 
-#details-container header button {
-    padding: 6px 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    border: none;
-    background-color: #6c757d;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#details-container header button:hover {
-    background-color: #5a6268;
-}
-
-#details-body p {
-    margin: 6px 0;
-    font-size: 1rem;
-    line-height: 1.3;
-    text-align: left;
-}
-
-#details-body p strong {
-    display: inline-block;
-    width: 140px;
-    text-align: right;
-    margin-right: 12px;
-    color: #333;
-}
-
-footer {
-    margin-top: 30px;
-}
-
-#confirm-button {
-    background-color: #007bff;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 12px 28px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#confirm-button:hover {
-    background-color: #0056b3;
-}
+.document-row {  
+    display: flex;  
+    justify-content: space-between;  
+}  
+  
+.document {  
+    flex: 1;  
+    margin-right: 10px;  
+    text-align: center;  
+}  
