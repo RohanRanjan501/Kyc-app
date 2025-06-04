@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
+import { speakText } from '../components/SpeechService';  
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -8,6 +9,7 @@ const HomePage = () => {
     const handleStartKYC = () => {
         navigate('/form');
     };
+
 
     return (
         <div className="home-container">

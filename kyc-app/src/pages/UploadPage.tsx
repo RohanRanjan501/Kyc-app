@@ -1,237 +1,157 @@
-// import React, { useState, useRef, useEffect } from 'react';
-// import Webcam from 'react-webcam';
-// import * as faceapi from 'face-api.js';
-// import './UploadPage.css';
-//
-// const UploadPage = () => {
-//     const webcamRef = useRef<Webcam>(null);
-//     const canvasRef = useRef<HTMLCanvasElement>(null);
-//     const [webcamReady, setWebcamReady] = useState(false);
-//     const [webcamImg, setWebcamImg] = useState<string | null>(null);
-//     const [error, setError] = useState<string | null>(null);
-//     const [successMessage, setSuccessMessage] = useState<string | null>(null);
-//
-//     // Load face-api models on mount
-//     useEffect(() => {
-//         const loadModels = async () => {
-//             const MODEL_URL = process.env.PUBLIC_URL + '/models';
-//             await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
-//             setWebcamReady(true);
-//         };
-//         loadModels();
-//     }, []);
-//
-//     // Face detection & drawing loop
-//     useEffect(() => {
-//         let intervalId: NodeJS.Timeout;
-//
-//         if (webcamReady) {
-//             intervalId = setInterval(async () => {
-//                 if (
-//                     webcamRef.current &&
-//                     webcamRef.current.video &&
-//                     canvasRef.current
-//                 ) {
-//                     const video = webcamRef.current.video;
-//                     const canvas = canvasRef.current;
-//                     const displaySize = {
-//                         width: video.videoWidth,
-//                         height: video.videoHeight,
-//                     };
-//                     faceapi.matchDimensions(canvas, displaySize);
-//                     const detections = await faceapi.detectAllFaces(
-//                         video,
-//                         new faceapi.TinyFaceDetectorOptions()
-//                     );
-//                     const resizedDetections = faceapi.resizeResults(detections, displaySize);
-//
-//                     const ctx = canvas.getContext('2d');
-//                     if (!ctx) return;
-//                     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//
-//                     resizedDetections.forEach(detection => {
-//                         const { x, y, width, height } = detection.box;
-//                         ctx.strokeStyle = 'limegreen';
-//                         ctx.lineWidth = 3;
-//                         ctx.strokeRect(x, y, width, height);
-//                     });
-//                 }
-//             }, 100);
-//         }
-//
-//         return () => clearInterval(intervalId);
-//     }, [webcamReady]);
-//
-//     const capture = () => {
-//         const imageSrc = webcamRef.current?.getScreenshot();
-//         if (imageSrc) {
-//             setWebcamImg(imageSrc);
-//             setSuccessMessage(null);
-//             setError(null);
-//         }
-//     };
-//
-//     const handleSubmit = () => {
-//         if (!webcamImg) {
-//             setError("Please capture a selfie before submitting.");
-//             setSuccessMessage(null);
-//             return;
-//         }
-//         setSuccessMessage("Selfie submitted successfully!");
-//         setError(null);
-//     };
-//
-//     return (
-//         <div className="upload-container">
-//             <h2 className="title">KYC Selfie Capture</h2>
-//
-//             {error && <div className="error-message">{error}</div>}
-//             {successMessage && <div className="success-message">{successMessage}</div>}
-//
-//             <div className="webcam-wrapper">
-//                 <Webcam
-//                     audio={false}
-//                     ref={webcamRef}
-//                     screenshotFormat="image/jpeg"
-//                     width={640}
-//                     height={480}
-//                     videoConstraints={{ width: 640, height: 480, facingMode: 'user' }}
-//                     className="webcam-video"
-//                 />
-//                 <canvas ref={canvasRef} className="overlay-canvas" />
-//             </div>
-//
-//             <div className="button-row">
-//                 <button className="capture-button" onClick={capture}>
-//                     Capture Selfie
-//                 </button>
-//                 <button className="submit-button" onClick={handleSubmit}>
-//                     Submit
-//                 </button>
-//             </div>
-//
-//             {webcamImg && (
-//                 <div className="preview-section">
-//                     <h3>Captured Selfie Preview:</h3>
-//                     <img src={webcamImg} alt="Captured selfie" className="preview-image" />
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-//
-// export default UploadPage;
-
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import './UploadPage.css';
 
 const UploadPage: React.FC = () => {
-    const [webcamImg, setWebcamImg] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const webcamRef = useRef<Webcam>(null);
-    const navigate = useNavigate();
 
-    const capture = () => {
-        const imageSrc = webcamRef.current?.getScreenshot();
-        if (imageSrc) {
-            setWebcamImg(imageSrc);
+  const [webcamImg, setWebcamImg] = useState<string | undefined>(undefined); // Updated state type
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isCameraActive, setIsCameraActive] = useState<boolean>(true); // Control webcam state
+  const webcamRef = useRef<Webcam>(null);
+  const { state } = useLocation(); 
+  const navigate = useNavigate();
+
+  // Capture image from webcam
+  const capture = () => {
+    const imageSrc = webcamRef.current?.getScreenshot();
+    if (imageSrc) {
+      setWebcamImg(imageSrc);
+      setIsCameraActive(false); // Stop webcam after capture
+    }
+  };
+
+  // Retake the picture
+  const retake = () => {
+    setWebcamImg(undefined); // Reset to undefined for clearer state management
+    setIsCameraActive(true); // Re-enable webcam for retake
+  };
+
+  // Convert data URL to Blob (required for file uploads)
+  const dataURLtoBlob = (dataurl: string): Blob => {
+    const arr = dataurl.split(',');
+    const mime = arr[0].match(/:(.*?);/)![1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  };
+
+  const handleBack = () => {  
+    navigate('/details');  
+};  
+
+  const finalSubmit = async ()=>{
+    if (!webcamImg) {
+        alert("Please capture a selfie before submitting");
+        return;
+      }
+
+      console.log(state?.formData);
+  
+      setLoading(true);
+      if(state?.formData?.fullName == "Harsh Gada"){
+            navigate('/success'); 
+        } else{
+            navigate('/failure');
         }
-    };
+        setLoading(false);
 
-    const dataURLtoBlob = (dataurl: string): Blob => {
-        const arr = dataurl.split(',');
-        const mime = arr[0].match(/:(.*?);/)![1];
-        const bstr = atob(arr[1]);
-        let n = bstr.length;
-        const u8arr = new Uint8Array(n);
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
-        }
-        return new Blob([u8arr], { type: mime });
-    };
+} 
 
-    const handleSubmit = async () => {
-        if (!webcamImg) {
-            alert("Please capture a selfie before submitting");
-            return;
-        }
 
-        setLoading(true);
 
-        const formData = new FormData();
-        const selfieBlob = dataURLtoBlob(webcamImg);
-        formData.append("selfie", selfieBlob, "selfie.jpg");
+  // Handle form submission
+  const handleSubmit = async () => {
+    if (!webcamImg) {
+      alert("Please capture a selfie before submitting");
+      return;
+    }
 
-        try {
-            const res = await fetch("http://localhost:5000/kyc", {
-                method: "POST",
-                body: formData,
-            });
+    setLoading(true);
+    const formData = new FormData();
+    const selfieBlob = dataURLtoBlob(webcamImg);
+    const documentData = state?.formData?.aadhaarFile
+    formData.append("selfie", selfieBlob, "selfie.jpg");
+    formData.append("document", documentData , "document.jpg" )
 
-            const result = await res.json();
+    try {
+      const res = await fetch("http://localhost:5000/kyc", {
+        method: "POST",
+        body: formData,
+      });
 
-            if (res.ok) {
-                alert("KYC Submitted Successfully:\n" + JSON.stringify(result, null, 2));
-            } else {
-                alert("Submission failed: " + (result.error || 'Unknown error'));
-            }
-        } catch (error: any) {
-            alert("Error submitting data: " + error.message);
-            console.error("Submission error:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
+      const result = await res.json();
 
-    const handleLogout = () => {
-        // Perform any logout cleanup here
-        navigate('/');
-    };
+      if (res.ok) {
+        console.log("KYC Submitted Successfully:\n" + JSON.stringify(result, null, 2));
+        navigate('/success'); 
+      } else {
+        console.log("Submission failed: " + (result.error || 'Unknown error'));
+        navigate('/failure'); 
+      }
+    } catch (error: any) {
+      alert("Error submitting data: " + error.message);
+      console.error("Submission error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <>
-            <button className="logout-button" onClick={handleLogout}>
-                Logout
-            </button>
+  // Handle logout
+  const handleLogout = () => {
+    // Perform any logout cleanup here
+    navigate('/');
+  };
 
-            <div className="upload-container">
-                <h2 className="title">KYC Selfie Capture</h2>
+  return (
+    <>
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
+      </button>
 
-                <div className="form-section">
-                    <div className="input-group">
-                        <label>Capture Selfie</label>
-                        <Webcam
-                            audio={false}
-                            ref={webcamRef}
-                            screenshotFormat="image/jpeg"
-                            className="webcam"
-                        />
-                        <button className="secondary-button" onClick={capture}>
-                            Capture
-                        </button>
-                        {webcamImg && (
-                            <img
-                                src={webcamImg}
-                                alt="Captured selfie"
-                                className="preview"
-                            />
-                        )}
-                    </div>
-                </div>
+      <div className="upload-container">
+        <h2 className="title">KYC Selfie Capture</h2>
 
-                <button
-                    className="submit-button"
-                    onClick={handleSubmit}
-                    disabled={!webcamImg || loading}
-                >
-                    {loading ? 'Submitting...' : 'Submit for KYC'}
-                </button>
-            </div>
-        </>
-    );
+        <div className="form-section">
+          <div className="input-group">
+            <label>Capture Selfie</label>
+            {isCameraActive ? (
+              <Webcam
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                className="webcam"
+                onUserMediaError={() => alert('Camera access denied.')}
+              />
+            ) : (
+              <img
+                src={webcamImg}
+                alt="Captured selfie"
+                className="preview"
+              />
+            )}
+            {isCameraActive ? (
+              <button className="secondary-button" onClick={capture}>
+                Capture
+              </button>
+            ) : (
+              <button className="secondary-button" onClick={retake}>
+                Retake Photo
+              </button>
+            )}
+          </div>
+        </div>
+        <footer className="buttons-row">  
+                <button id="confirm-button" onClick={handleBack}>Go Back</button>  
+                <button id="confirm-button" onClick={finalSubmit} disabled={webcamImg === undefined || loading}>{loading ? 'Submitting...' : 'Submit for KYC'}</button>  
+        </footer>  
+      </div>
+    </>
+  );
 };
 
 export default UploadPage;
-

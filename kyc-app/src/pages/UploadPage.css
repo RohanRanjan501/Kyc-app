@@ -1,88 +1,111 @@
+/* UploadPage.css */
+
 .upload-container {
-    max-width: 700px;
-    margin: 30px auto;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #222;
-}
-
-.title {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.webcam-wrapper {
-    position: relative;
+    max-width: 600px;
     margin: 0 auto;
-    width: 640px;
-    height: 480px;
-    border: 3px solid limegreen;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(50, 205, 50, 0.7);
-    overflow: hidden;
-    background: black;
-}
-
-.webcam-video {
-    width: 640px !important;
-    height: 480px !important;
-    object-fit: cover;
-    display: block;
-}
-
-.overlay-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 640px !important;
-    height: 480px !important;
-    pointer-events: none;
-}
-
-.button-row {
+    padding: 30px;
+    border-radius: 8px;
+    background-color: #f7f9fc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .form-section {
     margin-top: 20px;
+  }
+  
+  .input-group {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.capture-button,
-.submit-button {
-    background-color: limegreen;
-    border: none;
-    color: white;
-    padding: 12px 22px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input,
+  button {
     font-size: 1rem;
+    padding: 12px 24px;
     border-radius: 6px;
+    margin-top: 10px;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.25s ease;
-}
-
-.capture-button:hover,
-.submit-button:hover {
-    background-color: #32cd32;
-}
-
-.error-message {
-    color: #d32f2f;
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-.success-message {
-    color: #388e3c;
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-
-.preview-section {
-    margin-top: 25px;
-}
-
-.preview-image {
-    width: 320px;
+  }
+  
+  .secondary-button {
+    background-color: #ff5e5e;
+    color: #fff;
+  }
+  
+  .secondary-button:hover {
+    background-color: #e84f4f;
+  }
+  
+  .submit-button {
+    background-color: #4CAF50;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .webcam {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .preview {
+    width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 0 12px rgba(50, 205, 50, 0.8);
-}
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  
+  .logout-button:hover {
+    background-color: #0056b3;
+  }
+
+  .buttons-row {  
+    display: flex;  
+    justify-content: space-between; /* This will push the buttons to the edges */  
+    grid-column: span 2; /* Ensure it spans the full width of the form */  
+    margin-top: 20px; /* Add some space above the buttons */  
+}  
+
+#confirm-button {  
+    background-color: #007bff;  
+    color: white;  
+    font-weight: 700;  
+    font-size: 1.1rem;  
+    padding: 12px 28px;  
+    border: none;  
+    border-radius: 12px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease;  
+}  
