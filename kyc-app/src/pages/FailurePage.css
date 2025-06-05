@@ -22,6 +22,26 @@
     margin-bottom: 20px;
   }
   
+  .failure-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left; /* Align the points to the left */
+  }
+  
+  .failure-point {
+    font-size: 1.1rem;
+    color: #721c24;
+    margin: 10px 0;
+  }
+  
+  .failure-icon {
+    color: #dc3545; /* Red color for the cross icon */
+    margin-right: 10px;
+    font-size: 1.5rem; /* Make the cross icon larger */
+    font-weight: bold;
+  }
+  
   .retry-button {
     background-color: #dc3545;
     color: white;

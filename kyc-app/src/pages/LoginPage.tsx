@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 import { Eye, EyeOff } from 'lucide-react';
+import loginIcon from '../assets/thumbnail_icon.jpg';
 
 const sampleCreds = {
     username: 'admin',
@@ -26,7 +27,7 @@ const LoginPage = () => {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h2>Login</h2>
+                <h2><img src={loginIcon} alt="Login Icon" className="login-icon" /></h2>
                 <input
                     type="text"
                     placeholder="Username"

@@ -4,7 +4,7 @@
     max-width: 600px;
     margin: 50px auto;
     padding: 30px;
-    background-color: #e8f7e7;
+    background-color: #d4edda;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -12,12 +12,38 @@
   
   .success-title {
     font-size: 1.8rem;
-    color: #4caf50;
+    color: #155724;
     margin-bottom: 15px;
   }
   
-  .success-button {
-    background-color: #4caf50;
+  .success-message {
+    font-size: 1.1rem;
+    color: #155724;
+    margin-bottom: 20px;
+  }
+  
+  .success-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left; /* Align the points to the left */
+  }
+  
+  .success-point {
+    font-size: 1.1rem;
+    color: #155724;
+    margin: 10px 0;
+  }
+  
+  .success-icon {
+    color: #28a745; /* Green color for the check mark */
+    margin-right: 10px;
+    font-size: 1.5rem; /* Make the check mark larger */
+    font-weight: bold;
+  }
+  
+  .continue-button {
+    background-color: #28a745;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -26,7 +52,7 @@
     font-size: 1.1rem;
   }
   
-  .success-button:hover {
-    background-color: #45a049;
+  .continue-button:hover {
+    background-color: #218838;
   }
   

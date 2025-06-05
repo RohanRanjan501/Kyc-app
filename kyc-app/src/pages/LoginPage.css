@@ -86,3 +86,11 @@
     font-size: 14px;
     text-align: center;
 }
+
+.login-icon {  
+    width: 120px; /* Adjust the size as needed */  
+    height: 120px; /* Adjust the size as needed */  
+    margin-right: 8px; 
+    border-radius: 50%; /* This creates the circular shape */  
+    object-fit: cover; 
+}  

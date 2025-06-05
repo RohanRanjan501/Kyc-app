@@ -1,6 +1,7 @@
 import React from 'react';
 import './AppBar.css';
 import logo from './Barclays_logo.png'; // ✅ Fix the path
+import loginIcon from '../assets/thumbnail_icon.jpg';
 
 const AppBar = () => (
     <div className="app-bar">

@@ -1,6 +1,7 @@
-import React from 'react';  
+import React, { useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';  
-import './DetailsPage.css';  
+import './DetailsPage.css';
+import { speakText } from '../components/SpeechService';  
   
 const DetailsPage: React.FC = () => {  
     const { state } = useLocation();  
@@ -14,6 +15,14 @@ const DetailsPage: React.FC = () => {
     const handleBack = () => {  
         navigate('/form', { state: { formData } });  
     };  
+
+    const hasSpokeDetails = useRef(false);  
+      
+      if (!hasSpokeDetails.current) {  
+        const welcomeMessage = "Please review your details and your uploaded required documents.";  
+        speakText(welcomeMessage);  
+        hasSpokeDetails.current = true;  
+      } 
   
     return (  
         <div id="details-container">  
@@ -51,4 +60,4 @@ const DetailsPage: React.FC = () => {
     );  
 };  
   
-export default DetailsPage;  
+export default DetailsPage;

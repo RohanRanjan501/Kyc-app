@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Webcam from 'react-webcam';
 import './UploadPage.css';
+import { speakText } from '../components/SpeechService';
 
 const UploadPage: React.FC = () => {
 
@@ -44,6 +45,8 @@ const UploadPage: React.FC = () => {
     navigate('/details');  
 };  
 
+    const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
   const finalSubmit = async ()=>{
     if (!webcamImg) {
         alert("Please capture a selfie before submitting");
@@ -53,9 +56,11 @@ const UploadPage: React.FC = () => {
       console.log(state?.formData);
   
       setLoading(true);
-      if(state?.formData?.fullName == "Harsh Gada"){
+      if(state?.formData?.fullName == "Chetan Jain"){
+            await delay(5000);
             navigate('/success'); 
         } else{
+            await delay(5000);
             navigate('/failure');
         }
         setLoading(false);
@@ -107,6 +112,14 @@ const UploadPage: React.FC = () => {
     navigate('/');
   };
 
+  const hasSpokenRef = useRef(false);  
+    
+    if (!hasSpokenRef.current) {  
+      const welcomeMessage = "Please capture your selfie.";  
+      speakText(welcomeMessage);  
+      hasSpokenRef.current = true;  
+} 
+
   return (
     <>
       <button className="logout-button" onClick={handleLogout}>
@@ -118,7 +131,6 @@ const UploadPage: React.FC = () => {
 
         <div className="form-section">
           <div className="input-group">
-            <label>Capture Selfie</label>
             {isCameraActive ? (
               <Webcam
                 audio={false}
